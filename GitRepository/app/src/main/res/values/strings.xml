@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GitRepository</string>
+    <string name="internet">No internet connection, Please make sure your device is connected to the internet</string>
+</resources>
