@@ -70,6 +70,7 @@
     </LinearLayout>
 
     <TextView
+        android:textIsSelectable="true"
         android:layout_weight="6"
         android:gravity="top"
         android:layout_margin="20dp"

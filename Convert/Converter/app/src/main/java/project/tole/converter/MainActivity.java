@@ -45,13 +45,18 @@ public  class MainActivity extends AppCompatActivity {
 
         titleToTranslate = findViewById(R.id.textTitleToTranslate);
         titleFromTranslate = findViewById(R.id.textTitleFromTranslate);
+        if(bool){
+            tx1.setText(toTranslate(et1.getText().toString(),true));
 
+        }
+        else{
+            tx1.setText(toTranslate(et1.getText().toString(),false));
+        }
 
         final ClipboardManager clipboard = (ClipboardManager) this.getSystemService(Context.CLIPBOARD_SERVICE);
         clipboard.addPrimaryClipChangedListener( new ClipboardManager.OnPrimaryClipChangedListener() {
             public void onPrimaryClipChanged() {
                 copyText = clipboard.getText().toString();
-                Toast.makeText(getBaseContext(),"Copy: "+copyText,Toast.LENGTH_LONG).show();
             }
         });
 
@@ -66,13 +71,21 @@ public  class MainActivity extends AppCompatActivity {
                 String val = et1.getText().toString();
                 et1.setText(tx1.getText().toString());
                 tx1.setText(val);
-                bool=true;
+                bool=false;
                 m=0;
                 if(n>1){
                     n=0;
                     m=1;
-                    bool = false;
+                    bool = true;
                 }
+                if(bool){
+                    tx1.setText(toTranslate(et1.getText().toString(),true));
+
+                }
+                if(!bool){
+                    tx1.setText(toTranslate(et1.getText().toString(),false));
+                }
+
 
                 titleToTranslate.setText(titles[n]);
                 titleFromTranslate.setText(titles[m]);
@@ -88,7 +101,7 @@ public  class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(!bool){
+                if(bool){
                     tx1.setText(toTranslate(et1.getText().toString(),true));
 
                 }
